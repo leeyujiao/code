@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function jia(mid){
+            var num = parseInt($("#num"+mid).val(),10);
+            var stockNum = parseInt($("#stockNum"+mid).html());
+            if(num<stockNum){
+                $("#num"+mid).val(num+1);
+            }
+        }
+        function jian(mid){
+            var num = parseInt($("#num"+mid).val(),10);
+            if(num>0){
+                $("#num"+mid).val(num-1);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <table border="1" align="center" width="80%">
+        <tr>
+            <th>序号</th>
+            <th>名称</th>
+            <th>价格</th>
+            <th>数量</th>
+            <th>库存</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="goods,j:${session.GOODS_LIST}">
+            <td th:text="${j.count}"></td>
+            <td th:text="${goods.goodsName}"></td>
+            <td th:text="${goods.goodsPrice}"></td>
+            <td>
+                <span th:id="'jian'+${j.count}" th:onclick="'jian('+${j.count}+')'">-</span>
+                <input type="text"  th:id="'num'+${j.count}" value="0"/>
+                <span th:id="'jia'+${j.count}" th:onclick="'jia('+${j.count}+')'">+</span>
+            </td>
+            <td th:text="${goods.si.goodsStockNum}" th:id="'stockNum'+${j.count}"></td>
+            <td><button>加入购物车</button></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.GoodsMapper">
+    <resultMap id="map1" type="bean.GoodsInfo">
+        <id property="goodsId" column="goodsId"/>
+        <result property="goodsName" column="goodsName"/>
+        <result property="goodsPrice" column="goodsPrice"/>
+        <result property="goodsState" column="goodsState"/>
+        <association property="si" column="goodsId" javaType="bean.StockInfo">
+            <id property="stockId" column="stockId"/>
+            <result property="goodsId" column="goodsId"/>
+            <result property="goodsStockNum" column="goodsStockNum"/>
+        </association>
+    </resultMap>
+    <select id="findAllGoods" resultMap="map1">
+        SELECT * FROM goods g,stock s WHERE g.goodsId=s.goodsId
+    </select>
+
+</mapper>
