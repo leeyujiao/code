@@ -34,5 +34,13 @@ public class EmpController {
         return "redirect:/emp/findemp.do?page=1";
     }
 
+    @RequestMapping("/searchemp")
+    public String searchEmp(String name,HttpSession session){
+
+        System.out.println(name);
+        session.setAttribute("EMP_LIST",eb.searchEmp(name));
+        return "index";
+    }
+
 
 }

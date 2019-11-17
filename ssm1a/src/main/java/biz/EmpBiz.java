@@ -10,4 +10,5 @@ public interface EmpBiz {
     List<EmpInfo> findEmpByPage(EmpPageInfo ep);
     List<String>findEmpPageNum();
     void deleteEmp(int empNo);
+    List<EmpInfo> searchEmp(String name);
 }

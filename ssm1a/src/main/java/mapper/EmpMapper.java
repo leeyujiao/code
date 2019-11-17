@@ -10,4 +10,5 @@ public interface EmpMapper {
     List<EmpInfo> findEmpByPage(EmpPageInfo ep);
     int findEmpCount();
     void deleteEmp(int empNo);
+    List<EmpInfo> searchEmp(String name);
 }

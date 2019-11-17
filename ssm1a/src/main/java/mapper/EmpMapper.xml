@@ -18,5 +18,10 @@
         update emp set empstate=0 where empno=${empNo}
     </delete>
 
+    <select id="searchEmp" resultType="bean.EmpInfo">
+        select *from emp where ename like #{name} and empstate=1
+    </select>
+
+
 
 </mapper>

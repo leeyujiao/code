@@ -43,4 +43,9 @@ public class EmpBizImpl implements EmpBiz {
     public void deleteEmp(int empNo) {
         em.deleteEmp(empNo);
     }
+
+    @Override
+    public List<EmpInfo> searchEmp(String name) {
+        return em.searchEmp("%"+name+"%");
+    }
 }
