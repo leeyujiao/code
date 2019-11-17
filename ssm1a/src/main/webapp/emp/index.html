@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table align="center" border="1">
+    <tr>
+        <th>empno</th>
+        <th>empname</th>
+        <th>job</th>
+        <th>mgr</th>
+        <th>hiredate</th>
+        <th>sal</th>
+        <th>comm</th>
+        <th>deptno</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="emp,j:${session.EMP_LIST}">
+        <td th:text="${emp.empNo}"></td>
+        <td th:text="${emp.eName}"></td>
+        <td th:text="${emp.job}"></td>
+        <td th:text="${emp.mgr}"></td>
+        <td th:text="${emp.hireDate}"></td>
+        <td th:text="${emp.sal}"></td>
+        <td th:text="${emp.comm}"></td>
+        <td th:text="${emp.deptNo}"></td>
+        <td>
+            <a th:href="@{deleteemp.do(empNo=${emp.empNo})}">
+                删除
+            </a>
+            &nbsp;&nbsp;修改</td>
+    </tr>
+    <tr >
+        <td align="center" colspan="9">
+            <label th:each="p,j:${session.PAGE_LIST}">
+            <a th:href="@{findemp.do(page=${j.count})}">
+                <label th:text="${j.count}"></label>
+            </a>
+                &nbsp;&nbsp;
+            </label>
+        </td>
+
+
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.EmpMapper">
+    <select id="findAllEmp" resultType="bean.EmpInfo">
+        select * from emp where empstate=1
+    </select>
+
+    <select id="findEmpByPage" resultType="bean.EmpInfo" parameterType="bean.EmpPageInfo">
+        SELECT * FROM emp where empstate=1 LIMIT ${start},${size}
+    </select>
+
+    <select id="findEmpCount" resultType="int">
+        select count(empno) from emp where empstate=1
+    </select>
+
+    <delete id="deleteEmp" parameterType="int">
+        update emp set empstate=0 where empno=${empNo}
+    </delete>
+
+
+</mapper>
