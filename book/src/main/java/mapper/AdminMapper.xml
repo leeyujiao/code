@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AdminMapper">
+    <select id="checkAdminLogin" parameterType="bean.AdminInfo"
+            resultType="bean.AdminInfo">
+        SELECT * FROM admininfo
+         WHERE adminname=#{adminName} AND adminpass=md5(#{adminPass})
+    </select>
+    <select id="checkAdminPowerLogin" resultType="bean.AdminInfo">
+SELECT * FROM adminpowerinfo
+WHERE powerid=1 AND adminid=
+(SELECT adminid FROM admininfo
+WHERE adminname=#{adminName})
+    </select>
+</mapper>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.post("author.do",{"type":"find"},function(data){
+                for(var i=0;i<data.length;i++){
+                    var o = data[i];
+                    $("#authorContent").append(o.authorName+"&nbsp;");
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+   <div id="authorContent" align="center">
+
+   </div>
+</body>
+</html>

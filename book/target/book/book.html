@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.post("book.do",{"type":"search"},function(data){
+                for(var i=0;i<data.length;i++){
+                    var o= data[i];
+                    var str = "<tr>";
+                    str+="<td>"+(i+1)+"</td>";
+                    str+="<td>"+o.bookName+"</td>";
+                    str+="<td>"+o.ai.authorName+"</td>";
+                    str+="<td>"+o.pi.pubName+"</td>";
+                    str+="<td>"+o.bookContent+"</td>";
+                    str+="</tr>";
+                    $("#table").append(str);
+
+                }
+            })
+        })
+
+        function searchBook(){
+            var bookName = $("#bookName").val();
+            var authorName = $("#authorName").val();
+            var pubName = $("#pubName").val();
+            $.post("book.do",{"type":"searchbook","bookName":bookName,"authorName":authorName,"pubName":pubName},function(data){
+                for(var i=0;i<data.length;i++){
+                    var o= data[i];
+                    var str = "<tr>";
+                    str+="<td>"+(i+1)+"</td>";
+                    str+="<td>"+o.bookName+"</td>";
+                    str+="<td>"+o.ai.authorName+"</td>";
+                    str+="<td>"+o.pi.pubName+"</td>";
+                    str+="<td>"+o.bookContent+"</td>";
+                    str+="</tr>";
+                    $("#table").append(str);
+
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <table border="1" align="center" width="70%">
+        <tr>
+            <th>书名</th>
+            <td><input type="text" id="bookName"/></td>
+        </tr>
+        <tr>
+            <th>作者姓名</th>
+            <td><input type="text" id="authorName"/></td>
+        </tr>
+        <tr>
+            <th>出版社名称</th>
+            <td><input type="text" id="pubName"/></td>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <button onclick="searchBook()">搜索一下</button>
+            </th>
+        </tr>
+    </table>
+
+
+    <table id="table" border="1" align="center" width="70%">
+        <tr>
+            <th>序号</th>
+            <th>书名</th>
+            <th>作者</th>
+            <th>出版社</th>
+            <th>简介</th>
+        </tr>
+
+    </table>
+</body>
+</html>

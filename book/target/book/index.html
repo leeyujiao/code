@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.post("admin.do",{"type":"getpower"},function(data){
+                for(var i=0;i<data.length;i++){
+                    var o = data[i];
+                    $("#powerContent").append(o.powerName+"&nbsp;");
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+我是后台管理首页
+<hr/>
+<div id="powerContent">
+
+</div>
+</body>
+</html>
