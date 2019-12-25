@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1" align="center" width="80%">
+        <tr th:each="emp,j:${session.EMPLIST}">
+            <td th:text="${j.count}">序号</td>
+            <td th:text="${emp.ename}">姓名</td>
+            <td th:text="${emp.job}">职位</td>
+            <td th:text="${emp.mgr}">上司ID</td>
+            <td th:text="${emp.hireDate}">入职日期</td>
+            <td th:text="${emp.sal}">工资</td>
+            <td th:text="${emp.comm}">奖金</td>
+            <td th:text="${emp.deptNo}">部门编号</td>
+        </tr>
+    </table>
+</body>
+</html>
