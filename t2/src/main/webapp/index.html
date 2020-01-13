@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.get("provinces",function(data){
+                for(var i=0;i<data.length;i++){
+                    var str = "<option value='"+data[i].provinceId+"'>"+data[i].province+"</option>";
+                    $("#s1").append(str);
+                }
+            });
+        })
+
+        function getPCity(){
+            var pid = $(":selected").val();
+            $.get("city",{"pid":pid});
+        }
+
+    </script>
+</head>
+<body>
+<select id="s1" onchange="getPCity()">
+    <option value="-1">--请选择--</option>
+</select>
+</body>
+</html>
